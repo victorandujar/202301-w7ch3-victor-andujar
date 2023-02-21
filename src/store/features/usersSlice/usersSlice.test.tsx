@@ -7,7 +7,6 @@ describe("Given a users reducer", () => {
       const initialState: UserStructure = {
         id: "",
         username: "",
-        email: "",
         isLogged: false,
         token: "",
       };
@@ -15,7 +14,6 @@ describe("Given a users reducer", () => {
       const user: UserStructure = {
         id: "7987786",
         username: "victor37",
-        email: "victor37@gmail.com",
         isLogged: true,
         token: "saddsdasdsadsa",
       };

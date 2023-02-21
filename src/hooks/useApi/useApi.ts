@@ -3,11 +3,13 @@ import {
   createRobotActionCreator,
   deleteRobotActionCreator,
   loadRobotsActionCreator,
-} from "../store/features/robotsSlice/robotsSlice";
+} from "../../store/features/robotsSlice/robotsSlice";
 
-import { useAppDispatch } from "../store/hooks";
-import { RobotStructure } from "../types/types";
+import { useAppDispatch } from "../../store/hooks";
+import { RobotStructure } from "../../types/types";
 
+const apiUrl = process.env.REACT_APP_URL_API;
+const path = "robots";
 const deleteRobot = "/delete/";
 
 const addRobot = "/create/";
@@ -18,7 +20,7 @@ const useApi = () => {
 
   const getRobots = useCallback(async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_URL_API!);
+      const response = await fetch(`${apiUrl!}${path}`);
       const robots = await response.json();
 
       if (!response.ok) {
@@ -35,7 +37,7 @@ const useApi = () => {
     async (robot: RobotStructure) => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_URL_API}${deleteRobot}${robot.id}?token=${token}`,
+          `${apiUrl}${path}${deleteRobot}${robot.id}?token=${token}`,
           {
             method: "DELETE",
           }
@@ -55,24 +57,21 @@ const useApi = () => {
 
   const createRobot = useCallback(
     async (robot: RobotStructure) => {
-      const response = await fetch(
-        `${process.env.REACT_APP_URL_API}${addRobot}`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            name: robot.name,
-            url: robot.url,
-            stats: {
-              speed: robot.stats.speed,
-              endurance: robot.stats.endurance,
-              creationDate: robot.stats.creationDate,
-            },
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
+      const response = await fetch(`${apiUrl}${path}${addRobot}`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: robot.name,
+          url: robot.url,
+          stats: {
+            speed: robot.stats.speed,
+            endurance: robot.stats.endurance,
+            creationDate: robot.stats.creationDate,
           },
-        }
-      );
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
 
       if (!response.ok) {
         return;
