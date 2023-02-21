@@ -4,8 +4,8 @@ import App from "./App";
 
 describe("Given an App component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a heading with the text 'Robots'", () => {
-      const headingText = "Robots";
+    test("Then it should show a heading with the text 'Robots collection'", () => {
+      const headingText = "Robots collection";
 
       render(
         <Wrapper>

@@ -5,8 +5,8 @@ import GlobalStyles from "../../styles/GlobalStyles";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a title 'Robots'", () => {
-      const titleText = "Robots";
+    test("Then it should show a title 'Robots collection'", () => {
+      const titleText = "Robots collection";
 
       render(
         <Wrapper>

@@ -10,3 +10,14 @@ export interface RobotStructure {
 }
 
 export type RobotsStructure = RobotStructure[];
+
+export interface UserState {
+  id: string;
+  username: string;
+  token: string;
+  email: string;
+}
+
+export interface UserStructure extends UserState {
+  isLogged: boolean;
+}
