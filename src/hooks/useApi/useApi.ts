@@ -13,7 +13,6 @@ const path = "robots";
 const deleteRobot = "/delete/";
 
 const addRobot = "/create/";
-const token = "victor37marc4";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
@@ -37,7 +36,7 @@ const useApi = () => {
     async (robot: RobotStructure) => {
       try {
         const response = await fetch(
-          `${apiUrl}${path}${deleteRobot}${robot.id}?token=${token}`,
+          `${apiUrl}${path}${deleteRobot}${robot.id}`,
           {
             method: "DELETE",
           }

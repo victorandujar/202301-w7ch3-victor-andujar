@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppSelector } from "../../store/hooks";
 import Card from "../Card/Card";
 import RobotListStyled from "./RobotListStyled";
+import { useEffect } from "react";
 
 const RobotsList = (): JSX.Element => {
   const { getRobots } = useApi();
