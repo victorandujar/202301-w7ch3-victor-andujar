@@ -34,6 +34,7 @@ const useUsers = (): UseUsersStructure => {
     const { username, id } = tokenPayload;
 
     dispatch(loginUserActionCreator({ username, id, token }));
+    localStorage.setItem("token", token);
   };
 
   return { loginUser };
